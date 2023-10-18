@@ -76,6 +76,9 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer:1.1.1")
     implementation("androidx.media3:media3-exoplayer-dash:1.1.1")
     implementation("androidx.media3:media3-ui:1.1.1")
+    implementation("androidx.media3:media3-transformer:1.1.1")
+    implementation("androidx.media3:media3-effect:1.1.1")
+    implementation("androidx.media3:media3-common:1.1.1")
 
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.46.1")
