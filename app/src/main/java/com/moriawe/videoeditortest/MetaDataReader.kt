@@ -22,7 +22,7 @@ class MetaDataReaderImpl(
         val fileName = app.contentResolver
             .query(
                 contentUri,
-                arrayOf(MediaStore.Video.VideoColumns.DISPLAY_NAME)
+                arrayOf(MediaStore.Video.VideoColumns.DISPLAY_NAME),
                 null,
                 null,
                 null,
