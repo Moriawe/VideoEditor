@@ -1,6 +1,8 @@
 package com.moriawe.videoeditortest
 
 import android.net.Uri
+import android.util.Log
+import androidx.core.net.toUri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,9 +18,11 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     val player: Player,
-    private val metaDataReader: MetaDataReader
+    private val metaDataReader: MetaDataReader,
+    private val videoTrimmer: VideoTrimmer
 ): ViewModel() {
 
+    private val TAG = "MainViewModel"
     private val videoUris = savedStateHandle.getStateFlow("videoUris", emptyList<Uri>())
 
     val videoItems = videoUris.map { uris ->
@@ -44,6 +48,20 @@ class MainViewModel @Inject constructor(
         player.setMediaItem(
             videoItems.value.find { it.contentUri == uri}?.mediaItem ?: return
         )
+    }
+
+    fun trimVideo() {
+        val uri = player.currentMediaItem?.mediaId?.toUri()
+        if (uri != null) {
+            player.addMediaItem(
+                videoTrimmer.trimVideo(uri, 1000, 10000)
+            )
+            Log.d(TAG,"trimVideo: video is cut")
+        } else {
+            Log.d(TAG,"trimVideo: No video found")
+            println("You need to provide a video")
+        }
+
     }
 
     override fun onCleared() {

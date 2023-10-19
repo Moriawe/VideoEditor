@@ -80,6 +80,11 @@ dependencies {
     implementation("androidx.media3:media3-effect:1.1.1")
     implementation("androidx.media3:media3-common:1.1.1")
 
+    // 3rd Party Video Trimmer
+    //implementation("life.knowledge4:k4l-video-trimmer:1.0")
+    implementation("com.arthenica:ffmpeg-kit-full:4.5.1-1")
+    implementation("org.florescu.android.rangeseekbar:rangeseekbar-library:0.3.0")
+
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.46.1")
     kapt("com.google.dagger:hilt-compiler:2.48.1")

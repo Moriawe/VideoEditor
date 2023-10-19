@@ -26,4 +26,10 @@ object VideoPlayerModule {
         return MetaDataReaderImpl(app)
     }
 
+    @Provides
+    @ViewModelScoped
+    fun provideVideoTrimmer(): VideoTrimmer {
+        return VideoTrimmerImpl()
+    }
+
 }

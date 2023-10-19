@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ContentCut
 import androidx.compose.material.icons.filled.FileOpen
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -94,13 +96,26 @@ class MainActivity : ComponentActivity() {
                             .aspectRatio(16 / 9f) //Change this to screen size
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    IconButton(onClick = {
-                        selectVideoLauncher.launch("video/mp4") // Will only show videofiles of type mp3
-                    }) {
-                        Icon(
-                            imageVector = Icons.Default.FileOpen,
-                            contentDescription = "Select Video"
-                        )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        IconButton(onClick = {
+                            selectVideoLauncher.launch("video/mp4") // Will only show videofiles of type mp3
+                        }) {
+                            Icon(
+                                imageVector = Icons.Default.FileOpen,
+                                contentDescription = "Select Video"
+                            )
+                        }
+                        IconButton( onClick = {
+                            viewModel.trimVideo()
+                        }) {
+                            Icon(
+                                imageVector = Icons.Default.ContentCut,
+                                contentDescription = "Trim video"
+                            )
+                        }
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                     LazyColumn(
