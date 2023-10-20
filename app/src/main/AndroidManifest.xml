@@ -20,10 +20,11 @@
             android:theme="@style/Theme.VideoEditorTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".simple_player.SimplePlayerActivity" />
+        <activity android:name=".video_editor.VideoEditorActivity" />
     </application>
 
 </manifest>
