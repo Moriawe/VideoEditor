@@ -97,6 +97,7 @@ class SimplePlayerActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .aspectRatio(16 / 9f) //Change this to screen size
                     )
+                    // progressbar + controlls
                     Spacer(modifier = Modifier.height(8.dp))
                     Row(
                         modifier = Modifier

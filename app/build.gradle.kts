@@ -62,6 +62,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.media3:media3-transformer:1.1.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -76,14 +77,12 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer:1.1.1")
     implementation("androidx.media3:media3-exoplayer-dash:1.1.1")
     implementation("androidx.media3:media3-ui:1.1.1")
-    //implementation("androidx.media3:media3-transformer:1.1.1")
-    //implementation("androidx.media3:media3-effect:1.1.1")
-    //implementation("androidx.media3:media3-common:1.1.1")
+    implementation("androidx.media3:media3-transformer:1.1.1")
+    implementation("androidx.media3:media3-effect:1.1.1")
+    implementation("androidx.media3:media3-common:1.1.1")
 
-    // 3rd Party Video Trimmer
-    //implementation("life.knowledge4:k4l-video-trimmer:1.0")
-    //implementation("com.arthenica:ffmpeg-kit-full:4.5.1-1")
-    //implementation("org.florescu.android.rangeseekbar:rangeseekbar-library:0.3.0")
+    // Data storage
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.46.1")
