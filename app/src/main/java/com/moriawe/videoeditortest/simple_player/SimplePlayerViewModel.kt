@@ -1,6 +1,5 @@
 package com.moriawe.videoeditortest.simple_player
 
-import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
@@ -9,7 +8,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
-import androidx.media3.common.util.Util
 import com.moriawe.videoeditortest.MetaDataReader
 import com.moriawe.videoeditortest.VideoItem
 import com.moriawe.videoeditortest.VideoTrimmer
@@ -17,7 +15,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
@@ -67,21 +64,6 @@ class SimplePlayerViewModel @Inject constructor(
             Log.d(TAG,"trimVideo: No video found")
             println("You need to provide a video")
         }
-        //Internal storage
-        val file = File(filesDir)
-        val outputFile = File(applicationContext, filesDir, "temp_video.mp4")
-        val newVideo = VideoItem(
-            uri,
-            videoTrimmer.trimVideo(uri, 1000, 10000),
-            "temporaryVideo.mp4"
-        )
-        //createTempFile(String prefix, String suffix)
-        setDestinationPath("")
-        setVideoUri(Uri.parse("path"))
-
-        val context: Context = ApplicationProvider.getApplicationContext<Context>()
-        val outputPath = Util.createTempFile(context, "TransformerTest").path
-
     }
 
     override fun onCleared() {

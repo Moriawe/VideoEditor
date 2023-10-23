@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -28,8 +29,8 @@ object VideoPlayerModule {
 
     @Provides
     @ViewModelScoped
-    fun provideVideoTrimmer(): VideoTrimmer {
-        return VideoTrimmerImpl()
+    fun provideVideoTrimmer(app: Application): VideoTrimmer {
+        return VideoTrimmerImpl(app)
     }
 
 }

@@ -1,5 +1,6 @@
 package com.moriawe.videoeditortest.simple_player
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -29,6 +30,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -37,6 +39,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.ui.PlayerView
 import com.moriawe.videoeditortest.ui.theme.VideoEditorTestTheme
+import com.moriawe.videoeditortest.video_editor.VideoEditorActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,6 +50,7 @@ class SimplePlayerActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             VideoEditorTestTheme {
+                val context = LocalContext.current
                 val viewModel = hiltViewModel<SimplePlayerViewModel>()
                 val videoItems by viewModel.videoItems.collectAsState()
                 val selectVideoLauncher = rememberLauncherForActivityResult(
@@ -112,11 +116,12 @@ class SimplePlayerActivity : ComponentActivity() {
                             )
                         }
                         IconButton( onClick = {
-                            viewModel.trimVideo()
+                            context.startActivity(Intent(context, VideoEditorActivity::class.java))
+                            //viewModel.trimVideo()
                         }) {
                             Icon(
                                 imageVector = Icons.Default.ContentCut,
-                                contentDescription = "Trim video"
+                                contentDescription = "Edit Video"
                             )
                         }
                     }
