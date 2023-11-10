@@ -101,7 +101,7 @@ class SimplePlayerActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .aspectRatio(16 / 9f) //Change this to screen size
                     )
-                    // progressbar + controlls
+                    // progressbar + controls
                     Spacer(modifier = Modifier.height(8.dp))
                     Row(
                         modifier = Modifier
@@ -116,9 +116,15 @@ class SimplePlayerActivity : ComponentActivity() {
                             )
                         }
                         IconButton( onClick = {
-                            context.startActivity(Intent(context, VideoEditorActivity::class.java))
-                            //viewModel.trimVideo()
-                        }) {
+                            //viewModel.currentUri()
+                            //val myIntent = Intent(context, VideoEditorActivity::class.java)
+                                //.setType("video/*")
+                            //    .putExtra("video", viewModel.currentUri())
+                                //.putExtra(Intent.ACTION_VIEW, viewModel.currentUri())
+                            //startActivity(myIntent)
+                                viewModel.trimVideo()
+
+                            }) {
                             Icon(
                                 imageVector = Icons.Default.ContentCut,
                                 contentDescription = "Edit Video"

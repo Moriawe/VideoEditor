@@ -53,8 +53,13 @@ class SimplePlayerViewModel @Inject constructor(
         )
     }
 
+    fun currentUri(): Uri? {
+        Log.d(TAG, "${player.currentMediaItem?.localConfiguration?.uri}")
+        return player.currentMediaItem?.localConfiguration?.uri
+    }
+
     fun trimVideo() {
-        val uri = player.currentMediaItem?.mediaId?.toUri()
+        val uri = currentUri()
         if (uri != null) {
             player.setMediaItem(
                 videoTrimmer.trimVideo(uri, 1000, 10000)
